@@ -1,0 +1,34 @@
+{
+  "version": "0.1.0",
+  "description": "A Snap built for integrating BEI Risk Scores into metamask",
+  "proposedName": "BEI Risk Score",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MetaMask/template-snap-monorepo.git"
+  },
+  "source": {
+    "shasum": "FMZLC4RkGmjJtYDRhdioYPVhPPR9ZQS4oL1q5na7ICE=",
+    "location": {
+      "npm": {
+        "filePath": "dist/bundle.js",
+        "iconPath": "images/icon.svg",
+        "packageName": "snap",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "initialPermissions": {
+    "endowment:network-access": {},
+    "endowment:transaction-insight": {
+      "allowTransactionOrigin": true
+    },
+    "snap_dialog": {},
+    "snap_notify": {},
+    "snap_manageState": {},
+    "endowment:rpc": {
+      "dapps": true,
+      "snaps": false
+    }
+  },
+  "manifestVersion": "0.1"
+}
