@@ -1,7 +1,7 @@
 {
-  "name": "snap",
-  "version": "0.1.0",
-  "private": true,
+  "name": "web3-security-snap",
+  "version": "0.1.13",
+  "private": false,
   "description": "The 'Hello, world!' of MetaMask Snaps, now written in TypeScript.",
   "repository": {
     "type": "git",

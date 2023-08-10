@@ -4,13 +4,8 @@ import {
 } from '@metamask/snaps-types'
 import { copyable, divider, heading, panel, text } from '@metamask/snaps-ui'
 
-const endpoint = 'http://localhost:3001/graphql'
-
-const validateQuery = `
-query ValidateApiKey($data: FindOneApiKey!) {
-  validateApiKey(data: $data)
-}`
-
+const endpoint = 'https://snap-api.anchainai.com/graphql'
+const validateQuery = ` query ValidateApiKey($data: FindOneApiKey!) { validateApiKey(data: $data) }`
 const riskScoreQuery = `query RiskScore($data: RiskScoreInput!) {
   riskScore(data: $data) {
     status
@@ -42,14 +37,14 @@ const setApiKey = async (apiKey: string | null) => {
 
 const validateApiKey = async (apiKey: string | null) => {
   let valid = false
-  await fetch(endpoint, {
+  const response = await fetch(endpoint, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       query: validateQuery,
-      variables: { data: { key: apiKey } },
+      variables: { data: { key: apiKey } }
     }),
   })
     .then((response) => response.text())
@@ -59,7 +54,7 @@ const validateApiKey = async (apiKey: string | null) => {
       valid = b.data.validateApiKey
     })
     .catch((error) => {
-      throw new Error(error)
+      throw new Error(error+ ' ' + endpoint)
     })
   return valid
 }
@@ -75,8 +70,7 @@ const displayAlert = async (error: string, explanation: string) => {
 }
 
 /**
- * Handle incoming JSON-RPC requests, sent through `wallet_invokeSnap`.
- *
+ * Handle incoming JSON-RPC requests, sent through `wallet_invokeSnap`
  * @param args - The request handler args as object.
  * @param args.origin - The origin of the request, e.g., the website that
  * invoked the snap.
@@ -103,7 +97,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
             'Invalid API Key',
             'The API Key attempted to be stored is invalid. Please try again.',
           )
-          return
+          
         }
         return snap.request({
           method: 'snap_dialog',
@@ -185,30 +179,21 @@ export const onTransaction: OnTransactionHandler = async ({
   })
     .then((response) => response.text())
     .then((body) => {
-      // Process the fetched data here
       b = JSON.parse(body)
+      if(b.errors && b.errors.length != 0 ){
+        throw new Error(JSON.stringify(b.errors.map((e: any) => e.message)))
+      }
     })
     .catch((error) => {
       throw new Error(error)
     })
-  let ret = [
-    text('BEI Risk Score for: **' + b.data.riskScore.address + '**'),
-    text(''),
-    text('Score'),
-    text(''),
-  ]
-
-  let scoreString =
-    b.data.riskScore.risk.score + ' ' + b.data.riskScore.risk.emoji
-  let scoreExplanation = '' + b.data.riskScore.risk.explanation
+  let ret = [ text('BEI Risk Score for: **' + b.data.riskScore.address + '**'), text(''), text('Score'), text('') ]
+  let scoreString = b.data.riskScore.risk.score + ' ' + b.data.riskScore.risk.emoji
+  let scoreExplanation = ' ' + b.data.riskScore.risk.explanation
   ret.push(heading(scoreString))
   ret.push(text(scoreExplanation))
 
-  if (
-    b.data.riskScore.category &&
-    b.data.riskScore.category.length != 1 &&
-    b.data.riskScore.category[0] != 'unaffiliated'
-  ) {
+  if ( b.data.riskScore.category && b.data.riskScore.category.length != 1 && b.data.riskScore.category[0] != 'unaffiliated' ) {
     ret.push(text('**Reason:** ' + b.data.riskScore.category.join(', ')))
     ret.push(text('**Detail:** ' + b.data.riskScore.detail.join(', ')))
   }
