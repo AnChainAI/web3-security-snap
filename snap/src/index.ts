@@ -1,7 +1,4 @@
-import {
-  OnRpcRequestHandler,
-  OnTransactionHandler,
-} from '@metamask/snaps-types'
+import { OnRpcRequestHandler, OnTransactionHandler, } from '@metamask/snaps-types'
 import { copyable, divider, heading, panel, text } from '@metamask/snaps-ui'
 
 const endpoint = 'https://snap-api.anchainai.com/graphql'
@@ -171,6 +168,7 @@ export const onTransaction: OnTransactionHandler = async ({
       query: riskScoreQuery,
       variables: {
         data: {
+          from: transaction.from,
           address: transaction.to,
           chainId: chainId,
         },
@@ -185,7 +183,7 @@ export const onTransaction: OnTransactionHandler = async ({
       }
     })
     .catch((error) => {
-      throw new Error(error)
+      throw new Error(error + ' Visit: snap.anchainai.com')
     })
   let ret = [ text('BEI Risk Score for: **' + b.data.riskScore.address + '**'), text(''), text('Score'), text('') ]
   let scoreString = b.data.riskScore.risk.score + ' ' + b.data.riskScore.risk.emoji
@@ -198,6 +196,6 @@ export const onTransaction: OnTransactionHandler = async ({
     ret.push(text('**Detail:** ' + b.data.riskScore.detail.join(', ')))
   }
   return {
-    content: panel([...ret, divider()]),
+    content: panel([...ret, divider(),text('Feel like this score is wrong?  Help make Web3 safer by reporting here:'), copyable('https://web3guard.io/'), divider(),text('Powered by AnChain.AI'), copyable('https://anchain.ai')]),
   }
 }
