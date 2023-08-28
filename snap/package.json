@@ -1,8 +1,8 @@
 {
-  "name": "web3-security-snap",
+  "name": "web3-security",
   "version": "0.1.13",
   "private": false,
-  "description": "The 'Hello, world!' of MetaMask Snaps, now written in TypeScript.",
+  "description": "Web3 Security Snap provides BEI Risk Scores and labeling to help users make informed decisions about the security of the addresses they transact with.",
   "repository": {
     "type": "git",
     "url": "https://github.com/MetaMask/template-snap-monorepo.git"
