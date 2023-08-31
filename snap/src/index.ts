@@ -1,8 +1,8 @@
 import { OnRpcRequestHandler, OnTransactionHandler, } from '@metamask/snaps-types'
 import { copyable, divider, heading, panel, text } from '@metamask/snaps-ui'
 
-// const endpoint = 'https://snap-api.anchainai.com/graphql'
-const endpoint = 'http://localhost:3001/graphql'
+const endpoint = 'https://snap-api.anchainai.com/graphql'
+
 const validateQuery = ` query ValidateApiKey($data: FindOneApiKey!) { validateApiKey(data: $data) }`
 const riskScoreQuery = `query RiskScore($data: RiskScoreInput!) {
   riskScore(data: $data) {
