@@ -57,16 +57,6 @@ const validateApiKey = async (apiKey: string | null) => {
   return valid
 }
 
-const displayAlert = async (error: string, explanation: string) => {
-  await snap.request({
-    method: 'snap_dialog',
-    params: {
-      type: 'alert',
-      content: panel([heading(error), text(explanation)]),
-    },
-  })
-}
-
 /**
  * Handle incoming JSON-RPC requests, sent through `wallet_invokeSnap`
  * @param args - The request handler args as object.
@@ -91,11 +81,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
         if (validKey) {
           await setApiKey(request.params.apiKey)
         } else {
-          await displayAlert(
-            'Invalid API Key',
-            'The API Key attempted to be stored is invalid. Please try again.',
-          )
-          
+          throw new Error('Invalid API Key, The API Key attempted to be stored is invalid. Please try again.')
         }
         return snap.request({
           method: 'snap_dialog',
@@ -169,7 +155,6 @@ export const onTransaction: OnTransactionHandler = async ({
       query: riskScoreQuery,
       variables: {
         data: {
-          from: transaction.from,
           address: transaction.to,
           chainId: chainId,
         },
