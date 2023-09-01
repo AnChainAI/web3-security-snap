@@ -1,11 +1,11 @@
 {
   "name": "web3-security-snap",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "description": "Web3 Security Snap provides BEI Risk Scores and labeling to help users make informed decisions about the security of the addresses they transact with.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetaMask/template-snap-monorepo.git"
+    "url": "https://github.com/AnChainAI/web3-security-snap"
   },
   "license": "(MIT-0 OR Apache-2.0)",
   "main": "src/index.ts",
