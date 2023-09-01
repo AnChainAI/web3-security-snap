@@ -3,7 +3,7 @@ import { installSnap } from '@metamask/snaps-jest'
 import { panel, text } from '@metamask/snaps-ui'
 import { assert } from '@metamask/utils'
 
-let apiKey = 'tJueY6TkWt9ikGWy4zZvAZndSL4M4bBx'
+let apiKey = 'it1zCztXSm24dZJb4xOuWh5zBMvGFWCr'
 
 
 describe('onRpcRequest', () => {
@@ -54,7 +54,7 @@ describe('onTransaction', () => {
     const response = await sendTransaction({
       })
 
-    console.log(response.content)
+    console.log(response.content, response)
     expect(response).not.toRespondWithError(null);
 
 
