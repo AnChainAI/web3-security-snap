@@ -1,6 +1,6 @@
 {
   "version": "0.1.14",
-  "description": "A Snap built for integrating BEI Risk Scores into metamask",
+  "description": "A Snap built for integrating BEI Risk Scores into Metamask",
   "proposedName": "Web3 Security Snap",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
       "npm": {
         "filePath": "dist/bundle.js",
         "iconPath": "images/icon.svg",
-        "packageName": "web3-security",
+        "packageName": "web3-security-snap",
         "registry": "https://registry.npmjs.org/"
       }
     }
