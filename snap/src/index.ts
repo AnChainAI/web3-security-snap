@@ -120,7 +120,6 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
 }
 
 export const onTransaction: OnTransactionHandler = async ({
-  transactionOrigin,
   transaction,
   chainId,
 }) => {

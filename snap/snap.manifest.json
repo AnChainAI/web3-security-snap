@@ -1,5 +1,5 @@
 {
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "A Snap built for integrating BEI Risk Scores into metamask",
   "proposedName": "Web3 Security Snap",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/MetaMask/template-snap-monorepo.git"
   },
   "source": {
-    "shasum": "g677MTPQjwnqJfKFq4QC/XD6T344iOnwopvVSJBeRvc=",
+    "shasum": "InOcTPyP/+gllrDK3ZLwh0ekifZN6fYJyR55ctTFR+I=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",

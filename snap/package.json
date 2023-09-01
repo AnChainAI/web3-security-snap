@@ -1,6 +1,6 @@
 {
   "name": "web3-security",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "private": false,
   "description": "Web3 Security Snap provides BEI Risk Scores and labeling to help users make informed decisions about the security of the addresses they transact with.",
   "repository": {
