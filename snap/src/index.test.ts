@@ -5,9 +5,9 @@ import { assert } from '@metamask/utils'
 
 let apiKey = 'tJueY6TkWt9ikGWy4zZvAZndSL4M4bBx'
 
-console.error = message => {
+console.error = (message) => {
   //    throw new Error(message);
-      };
+}
 
 describe('onRpcRequest', () => {
   it('adds api key to snap', async () => {
@@ -25,11 +25,17 @@ describe('onRpcRequest', () => {
       params: { apiKey },
     })
 
-
     const ui = await response.getInterface()
-    console.log(ui)
-    assert(ui.type == "alert")
+    expect(ui).toRender(
+      panel([
+        text('API Key stored successfully'),
+        text(
+          '"http://localhost:8080" has successfully stored a valid api key in your local metamask storage',
+        ),
+      ]),
+    )
     await ui.ok()
+    expect(await response).toRespondWith(null)
     await close()
   })
 })
