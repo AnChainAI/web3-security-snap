@@ -1,6 +1,6 @@
 {
-  "name": "web3-security",
-  "version": "0.1.14",
+  "name": "web3-security-snap",
+  "version": "1.0.0",
   "private": false,
   "description": "Web3 Security Snap provides BEI Risk Scores and labeling to help users make informed decisions about the security of the addresses they transact with.",
   "repository": {
@@ -27,11 +27,12 @@
   },
   "dependencies": {
     "@jest/globals": "^29.6.4",
-    "@metamask/snaps-jest": "^0.35.2-flask.1",
+    "@metamask/snaps-jest": "^0.37.4-flask.1",
     "@metamask/snaps-types": "^0.32.2",
     "@metamask/snaps-ui": "^0.32.2",
     "@swc/jest": "^0.2.29",
     "buffer": "^6.0.3",
+    "puppeteer": "^21.1.1",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1"
   },

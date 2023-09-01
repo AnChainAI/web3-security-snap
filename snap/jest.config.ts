@@ -3,9 +3,4 @@ module.exports = {
     transform: {
       '^.+\\.(t|j)sx?$': 'ts-jest',
     },
-    testEnvironmentOptions: {
-        server: {
-          port: 8080,
-        },
-      },
   };
