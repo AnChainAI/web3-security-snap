@@ -99,8 +99,8 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
       }
 
       throw new Error('Must provide params.apiKey.')
-
-    case 'fetchKey':
+    // returns a bool based on if the api key is stored in BEIKey
+    case 'getStorageStatus':
       const persistedData = await snap.request({
         method: 'snap_manageState',
         params: { operation: 'get' },
