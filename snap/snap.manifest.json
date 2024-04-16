@@ -1,13 +1,13 @@
 {
-  "version": "1.0.2",
-  "description": "A Snap built for integrating BEI Risk Scores into Metamask",
-  "proposedName": "Web3 Security",
+  "version": "1.0.3",
+  "description": "A Snap built for integrating BEI Risk Scores into metamask",
+  "proposedName": "AnChain.AI",
   "repository": {
     "type": "git",
     "url": "https://github.com/AnChainAI/web3-security-snap"
   },
   "source": {
-    "shasum": "hWHPH9JldbbLDgIYWj0i4rUs2BSwNbYANYivMI30fqA=",
+    "shasum": "yKSdXrV6vUdxXvBcDfydSW1aNGHiSa3EZXkfZMDGIt4=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
